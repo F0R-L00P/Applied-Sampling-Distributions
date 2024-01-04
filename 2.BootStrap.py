@@ -31,34 +31,36 @@ NOTE: Computationally intensive, but can be done in parallel.
 
 import numpy as np
 
-# Function to perform bootstrap resampling
-def bootstrap_resample(original_sample, num_bootstrap_samples, sample_size):
-    # Array to store the bootstrap sample means
+# Function to perform bootstrap resampling and store both samples and their means
+def bootstrap_resample_and_store_samples(original_sample, num_bootstrap_samples, sample_size):
+    # Arrays to store the bootstrap samples and their means
+    bootstrap_samples = np.zeros((num_bootstrap_samples, sample_size))
     bootstrap_sample_means = np.zeros(num_bootstrap_samples)
 
     for i in range(num_bootstrap_samples):
         # Resample with replacement from the original sample
         bootstrap_sample = np.random.choice(original_sample, size=sample_size, replace=True)
-        # Calculate the mean of the bootstrap sample
+        # Store the bootstrap sample
+        bootstrap_samples[i] = bootstrap_sample
+        # Calculate and store the mean of the bootstrap sample
         bootstrap_sample_means[i] = np.mean(bootstrap_sample)
 
-    return bootstrap_sample_means
+    return bootstrap_samples, bootstrap_sample_means
 
 # Example Usage
 np.random.seed(0) # For reproducibility
 
-# Simulate an original sample from a population (e.g., heights in cm)
+# Parameters
 population_mean = 170  # Mean height
 population_std = 10    # Standard deviation
-sample_size = 1000000    # Size of the initial sample
-num_bootstrap_samples = 10000  # Number of bootstrap samples to generate
+sample_size = 1000     # Size of the initial sample
+num_bootstrap_samples = 5  # Number of bootstrap samples to generate for demonstration
 
 # Generate an initial sample
 original_sample = np.random.normal(population_mean, population_std, sample_size)
 
-# Perform bootstrap resampling
-bootstrap_means = bootstrap_resample(original_sample, num_bootstrap_samples, sample_size)
+# Perform bootstrap resampling and store the samples and their means
+bootstrap_samples, bootstrap_means = bootstrap_resample_and_store_samples(original_sample, num_bootstrap_samples, sample_size)
 
-# Display the first 10 bootstrap sample means for demonstration
-bootstrap_means[:10]
-
+# Display the first bootstrap sample and its mean for demonstration
+bootstrap_samples[:10], bootstrap_means[:10]
