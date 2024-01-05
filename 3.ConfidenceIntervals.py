@@ -45,14 +45,15 @@ def bootstrap_confidence_interval(data, statistic_func, R, confidence_level):
 data = np.array([85, 90, 78, 92, 88, 75, 84, 82, 89, 91])
 bootstrap_stats, confidence_interval = bootstrap_confidence_interval(data, np.mean, R=1000, confidence_level=90)
 
-bootstrap_stats, confidence_interval
-
 # Plotting
 plt.hist(bootstrap_stats, bins=20, color='skyblue', edgecolor='black', alpha=0.7)
-plt.axvline(confidence_interval[0], color='red', linestyle='dashed', linewidth=2, label='90% CI Lower')
-plt.axvline(confidence_interval[1], color='green', linestyle='dashed', linewidth=2, label='90% CI Upper')
+plt.axvline(confidence_interval[0], color='red', linestyle='dashed', linewidth=2, label=f'90% CI Lower: {confidence_interval[0]:.2f}')
+plt.axvline(confidence_interval[1], color='green', linestyle='dashed', linewidth=2, label=f'90% CI Upper: {confidence_interval[1]:.2f}')
+plt.axvline(np.mean(data), color='purple', linestyle='solid', linewidth=2, label=f'Actual Mean: {np.mean(data):.2f}')
 plt.title('Bootstrap Statistics with 90% Confidence Interval')
 plt.xlabel('Mean Value')
 plt.ylabel('Frequency')
+plt.tight_layout() # Tight layout often provides a better layout
+plt.grid(True) # Improve the appearance Add gridlines
 plt.legend()
 plt.show()
