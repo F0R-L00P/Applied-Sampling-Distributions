@@ -53,8 +53,8 @@ np.random.seed(0) # For reproducibility
 # Parameters
 population_mean = 170  # Mean height
 population_std = 10    # Standard deviation
-sample_size = 1000     # Size of the initial sample
-num_bootstrap_samples = 5  # Number of bootstrap samples to generate for demonstration
+sample_size = 1000000     # Size of the initial sample
+num_bootstrap_samples = 100  # Number of bootstrap samples to generate for demonstration
 
 # Generate an initial sample
 original_sample = np.random.normal(population_mean, population_std, sample_size)
