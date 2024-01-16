@@ -82,7 +82,6 @@ ax2.grid(True)
 plt.tight_layout()
 plt.show()
 
-
 #######################################################################
 # Generate a sample from an exponential distribution
 np.random.seed(0)
@@ -111,7 +110,7 @@ plt.show()
 np.random.seed(0)
 weibull_data = np.random.weibull(a=1.5, size=1000)  # 'a' is the shape parameter of the Weibull distribution
 
-# Create subplots for the Weibull distribution
+aaa# Create subplots for the Weibull distribution
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
 
 # Plot histogram for the Weibull distribution
