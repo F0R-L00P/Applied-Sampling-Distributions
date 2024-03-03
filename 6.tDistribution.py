@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 dfs = [1, 5, 10, 30]
 
 # Generate a range of t-values
-t_values = np.linspace(-5, 5, 100)
+t_values = np.linspace(-5, 5, 100, retstep=True)
 
 # Plot the t-distributions for different degrees of freedom
 plt.figure(figsize=(10, 6))
