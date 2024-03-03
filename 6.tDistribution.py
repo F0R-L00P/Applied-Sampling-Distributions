@@ -23,10 +23,12 @@ import scipy.stats as stats
 import matplotlib.pyplot as plt
 
 # Sample values for degrees of freedom
-dfs = [1, 5, 10, 30]
+# As the degrees of freedom increase, 
+# the t-distribution becomes closer to the normal distribution.
+dfs = [0.25, 1, 5, 10, 30]
 
 # Generate a range of t-values
-t_values = np.linspace(-5, 5, 100, retstep=True)
+t_values = np.linspace(-5, 5, 100)
 
 # Plot the t-distributions for different degrees of freedom
 plt.figure(figsize=(10, 6))
